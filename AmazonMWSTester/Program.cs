@@ -10,15 +10,99 @@ using System.IO;
 using System.Xml;
 using AmazonMWSTester.MWSApi;
 using System.Collections;
+using AmazonMWSTester.MWSApi.Results;
 
-namespace AmazonMWSTester
+namespace AmazonMWSTester.MWSApi
 {
 	class Program
 	{
+		private static string SellerId = "A34KHB3TRXSAWQ";
+		private static string AwsAccessKeyId = "AKIAJ5Z2SMI4J7BZAFTA";
+		private static string MwsAuthToken = "amzn.mws.3eae8c90-75bc-b87f-7de2-069ce93f891a";
+		private static string SecretKey = "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";
+
 		static void Main(string[] args)
 		{
+			var client = new MwsClient(SellerId, MwsAuthToken, AwsAccessKeyId, SecretKey);
 
-			var envelope = new Envelope();
+			var product = new Product("54321", "UPC", "889133008882", "A_GEN_NOTAX", new DescriptionData()
+			{
+				Brand = "test brand",
+				BulletPoint = new List<string> { "bull1","bull2"},
+				Description = "test description",
+				ItemType = "test type",
+				Manufacturer = "test mfg",
+				MSRP = new MSRP()
+				{
+					Currency = "USD",
+					Text = "100000.00"
+				},
+				Title = @"Adidas Yeezy Boost 350 - 7 ""Turtle Dove"" - AQ4832"
+			});
+
+			var productList = new List<Product>();
+			productList.Add(product);
+
+			var submitFeed = client.SubmitFeed<Product>(productList, OperationType.Update, MessageChoiceType.Product, DateTime.UtcNow, FeedTypes.ProductFeed, true);
+			submitFeed.Wait();
+
+			var submitResult = submitFeed.Result.Result;
+
+
+			Console.WriteLine(submitResult.SubmitFeedResult.FeedSubmissionInfo.FeedSubmissionId);
+
+			
+
+
+			/*
+
+			var productList = new List<Product>();
+
+			var product = new Product();
+			product.SKU = "12345";
+
+			var productId = new StandardProductID
+			{
+				Type = "UPC",
+				Value = "4015643103921"
+			};
+			product.StandardProductID = productId;
+			product.ProductTaxCode = "A_GEN_NOTAX";
+			product.DescriptionData = new DescriptionData
+			{
+				Title = "Test Title",
+				Brand = "Test brand",
+				Description = "Test description",
+				BulletPoint = new List<string> { "Bullet 1", "bullet 2" },
+				MSRP = new MSRP
+				{
+					Currency = "USD",
+					Text = "100.00"
+				},
+				Manufacturer = "Test manufacturer",
+				ItemType = "test item type"
+			};
+
+			product.ProductData = new ProductData
+			{
+				Health = new Health()
+				{
+					ProductType = new ProductType()
+					{
+						HealthMisc = new HealthMisc()
+						{
+							Directions = "Test directions",
+							Ingredients = "Test ingredients"
+						}
+					}
+				}
+			};
+
+			productList.Add(product);
+			var result = client.SubmitFeed<Product>(productList, OperationType.Update, MessageChoiceType.Product, new DateTime(2017, 7, 1), FeedTypes.ProductFeed, true);
+			result.Wait();
+
+			/*var envelope = new Envelope();
 			envelope.noNamespaceSchemaLocation = "amzn-envelope.xsd";
 
 			var header = new Header();
@@ -27,6 +111,7 @@ namespace AmazonMWSTester
 
 			envelope.Header = header;
 
+			var messages = new List<Message>();
 			var message = new Message();
 			message.MessageId = 1;
 			message.OperationType = OperationType.Update;
@@ -76,7 +161,8 @@ namespace AmazonMWSTester
 			message.Choice = product;
 			message.MessageChoice = MessageChoiceType.Product;
 
-			envelope.Message = message;
+			messages.Add(message);
+			envelope.Message = messages;
 
 			envelope.MessageType = "Product";
 			envelope.PurgeAndReplace = true;
@@ -95,27 +181,21 @@ namespace AmazonMWSTester
 				Send(textWriter.ToString());
 			}
 
+			*/
 
-	
 
 		}
 
-		public static void Send(string body) {
+		/*public static void Send(string body) {
 			var param = new SortedDictionary<string, string>(new SortDecendingBytes());
 			param["PurgeAndReplace"] = "false";
 			param["FeedType"] = "_POST_PRODUCT_DATA_";
-			var x = MWS.SendMws(body, param, "SubmitFeed");
+			var x = MwsCommands.SendMws(body, param, "SubmitFeed");
 
 			x.Wait();
 
-		}
+		}*/
 
-		public class SortDecendingBytes : IComparer<string>
-		{
-			public int Compare(string key1, string key2)
-			{
-				return string.Compare(key1, key2, StringComparison.Ordinal);
-			}
-		}
+		
 	}
 }

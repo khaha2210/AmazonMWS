@@ -9,5 +9,8 @@ namespace AmazonMWSTester.Feeds
 {
 	public class Inventory : MessageChoice
 	{
+		public Inventory () {
+
+		}
 	}
 }

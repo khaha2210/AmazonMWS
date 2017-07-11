@@ -1,4 +1,6 @@
 ﻿using AmazonMWSTester.Feeds;
+using AmazonMWSTester.MWSApi.MessageTypes;
+using AmazonMWSTester.MWSApi.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +31,12 @@ namespace AmazonMWSTester.Common
 		public DateTime EffectiveDate { get; set; }
 
 		[XmlElement(ElementName = "Message")]
-		public Message Message { get; set; }
+		public List<Message> Message { get; set; }
 
-		
+		public Envelope() {
+			
+		}
+
 
 
 	}
@@ -48,6 +53,7 @@ namespace AmazonMWSTester.Common
 		[XmlChoiceIdentifier("MessageChoice")]
 		[XmlElement("Product",Type = typeof(Product))]
 		[XmlElement("Inventory", Type = typeof(Inventory))]
+		[XmlElement("ProcessingReport", Type = typeof(ProcessingReport))]
 		public MessageChoice Choice { get; set; }
 
 		[XmlIgnore]
@@ -60,7 +66,9 @@ namespace AmazonMWSTester.Common
 	public enum MessageChoiceType
 	{
 		Product,
-		Inventory
+		Inventory,
+		ProcessingReport
+
 	}
 
 

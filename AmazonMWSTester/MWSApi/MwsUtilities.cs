@@ -1,28 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Security.Cryptography;
-using System.Text.RegularExpressions;
-using System.Xml.Serialization;
 using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace AmazonMWSTester.MWSApi
 {
-	public class MWS
+	public class MwsUtilities
 	{
-		private static HttpClient Client;
-
-
-		private static readonly string BaseAddress = "mws.amazonservices.com";
-		private static readonly string SignatureVersion = "2";
-		private static readonly string ApiVersion = "2009-01-01";
-		private static readonly string SignatureMethod = "HmacSHA256";
-
-
 		private static readonly Regex backSlashPtn = new Regex("\\\\");
 		private static readonly Regex equalPtn = new Regex("=");
 		private static readonly string escBackSlash = "\\\\";
@@ -44,57 +33,38 @@ namespace AmazonMWSTester.MWSApi
 		private static readonly Regex pct7EPtn = new Regex("%7[e|E]");
 		private static readonly Regex pctSingleQuotePtn = new Regex("'");
 		private static readonly Regex pct2FPtn = new Regex("%2[f|F]");
-		private static readonly Regex encoding = new Regex(@"\s*encoding=.*\""");
-		private static readonly string dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 
+		public static string SerializeXml<T>(T body) {
+			var xmlSerializer = new XmlSerializer(typeof(T));
 
-		static MWS() {
-			Client = new HttpClient();
-		}
-
-		public static async Task<HttpResponseMessage> SendMws(string xmlBody, SortedDictionary<string,string> parameters, string action) {
-			
-			xmlBody = encoding.Replace(xmlBody, "",1);
-
-			parameters["AWSAccessKeyId"] = "AKIAJ5Z2SMI4J7BZAFTA";
-			parameters["Action"] = action; //GetFeedSubmissionResult
-			parameters["Merchant"] = "A34KHB3TRXSAWQ";
-			parameters["MWSAuthToken"] = "amzn.mws.3eae8c90-75bc-b87f-7de2-069ce93f891a";
-			parameters["SignatureVersion"] = SignatureVersion;
-			parameters["Timestamp"] = DateTime.UtcNow.ToString(dateFormat);
-			parameters["Version"] = ApiVersion;
-			parameters["SignatureMethod"] = SignatureMethod;
-			var contentMd5 = HashXml(xmlBody);
-			parameters["ContentMD5Value"] = contentMd5;
-
-			var signedParameters = GetSignedQuery(parameters, BaseAddress);
-			var signature = UrlEncode(Sign(signedParameters, "DHm6XY75osUTkSE5nz8uEOl7ZT7uPqMdfx3jR5yb"));
-
-			var requestUri = AddQueryString("https://mws.amazonservices.com/", parameters);
-
-			var request = new HttpRequestMessage()
+			using (var textWriter = new StringWriter())
 			{
-				Method = HttpMethod.Post,
-				RequestUri = new Uri(requestUri + "Signature="+signature)
-			};
-
-			request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("text/plain"));
-			request.Headers.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue("RicsX", "1.0")));
-
-			request.Content = new StringContent(xmlBody);
-			request.Content.Headers.ContentType = new MediaTypeHeaderValue("text/xml");
-
-			try {
-				var response = await Client.SendAsync(request);	
-				return response;
+				xmlSerializer.Serialize(textWriter, body);
+				return textWriter.ToString();
 			}
-			catch (Exception e) {
-				Console.WriteLine(e);
-				return null;
-			}	
 		}
 
-		public static string HashXml(string body) {
+		public static T Deserialize<T>(string input) 
+		{
+			try
+			{
+				var deserializer = new XmlSerializer(typeof(T), "http://mws.amazonaws.com/doc/2009-01-01/");
+				using (var stringReader = new StringReader(input)) 
+				{
+					return (T)deserializer.Deserialize(stringReader);
+				}
+			}
+			catch (Exception ex) 
+			{
+				// TODO: log
+				//throw new Exception($"Deserializing type: {typeof(T)} failed.", ex);
+				return default(T);
+			}
+	
+		}
+
+		public static string HashXml(string body)
+		{
 			using (var md5 = MD5.Create())
 			{
 				var base64 = Convert.ToBase64String(md5.ComputeHash(Encoding.UTF8.GetBytes(body)));
@@ -102,23 +72,26 @@ namespace AmazonMWSTester.MWSApi
 			}
 		}
 
-		public static string Sign(string parameters, string key) {
-			using (var hmacSHA256 = new HMACSHA256(Encoding.UTF8.GetBytes(key))) {
+		public static string Sign(string parameters, string key)
+		{
+			using (var hmacSHA256 = new HMACSHA256(Encoding.UTF8.GetBytes(key)))
+			{
 				var resultHash = hmacSHA256.ComputeHash(Encoding.UTF8.GetBytes(parameters.ToCharArray()));
 				var base64Encode = Convert.ToBase64String(resultHash);
 				return base64Encode;
 			}
 		}
 
-		public static string GetSignedQuery(SortedDictionary<string,string> parameters, string address) {
+		public static string GetSignedQuery(SortedDictionary<string, string> parameters, string address)
+		{
 			var stringBuilder = new StringBuilder();
 
 			stringBuilder.Append("POST\n");
 			stringBuilder.Append(address);
 			stringBuilder.Append("\n/\n");
 
-			//var ordered = parameters.OrderBy(key => key.Key);
-			foreach (var pair in parameters) {
+			foreach (var pair in parameters)
+			{
 				stringBuilder.Append(UrlEncode(pair.Key) + "=");
 				stringBuilder.Append(UrlEncode(pair.Value) + "&");
 			}
@@ -128,11 +101,13 @@ namespace AmazonMWSTester.MWSApi
 			return stringBuilder.ToString();
 		}
 
-		public static string AddQueryString(string url, SortedDictionary<string,string> parameters) {
+		public static string AddQueryString(string url, SortedDictionary<string, string> parameters)
+		{
 			if (parameters.Keys.Count == 0)
 				return url;
 			var stringBuilder = new StringBuilder(url + "?");
-			foreach (var key in parameters.Keys) {
+			foreach (var key in parameters.Keys)
+			{
 				stringBuilder.Append(key + "=" + UrlEncode(parameters[key]) + "&");
 			}
 
@@ -146,12 +121,14 @@ namespace AmazonMWSTester.MWSApi
 			return hex.Replace("-", "");
 		}
 
-		public static string Base64Encode(string input) {
+		public static string Base64Encode(string input)
+		{
 			var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(input);
 			return Convert.ToBase64String(plainTextBytes);
 		}
 
-		public static string UrlEncode(string value) {
+		public static string UrlEncode(string value)
+		{
 			try
 			{
 				value = Uri.EscapeDataString(value);
@@ -190,6 +167,14 @@ namespace AmazonMWSTester.MWSApi
 			if (startIndex < num)
 				stringBuilder.Append(s, startIndex, num - startIndex);
 			return stringBuilder.ToString();
+		}
+	}
+
+	public class SortDecendingBytes : IComparer<string>
+	{
+		public int Compare(string key1, string key2)
+		{
+			return string.Compare(key1, key2, StringComparison.Ordinal);
 		}
 	}
 }

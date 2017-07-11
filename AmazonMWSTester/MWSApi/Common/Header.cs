@@ -14,5 +14,9 @@ namespace AmazonMWSTester.Common
 		public string DocumentVersion { get; set; }
 		[XmlElement(ElementName = "MerchantIdentifier")]
 		public string MerchantIdentifier { get; set; }
+
+		public Header() {
+
+		}
 	}
 }

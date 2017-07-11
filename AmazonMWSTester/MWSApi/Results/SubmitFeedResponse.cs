@@ -7,8 +7,8 @@ using System.Xml.Serialization;
 
 namespace AmazonMWSTester.MWSApi.Results
 {
-	[XmlRoot(ElementName = "SubmitFeedResponse")]
-	public class SubmitFeedResponse 
+	[XmlRoot(ElementName = "SubmitFeedResponse", Namespace = "http://mws.amazonaws.com/doc/2009-01-01/")]
+	public class SubmitFeedResponse  
 	{
 		[XmlElement(ElementName = "SubmitFeedResult")]
 		public SubmitFeedResult SubmitFeedResult { get; set; }

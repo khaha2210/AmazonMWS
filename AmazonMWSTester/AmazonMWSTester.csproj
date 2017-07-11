@@ -66,13 +66,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MWSApi\Common\Base.cs" />
+    <Compile Include="MWSApi\Common\amzn-base.cs" />
     <Compile Include="MWSApi\Common\Envelope.cs" />
     <Compile Include="MWSApi\Common\Header.cs" />
+    <Compile Include="MWSApi\HttpResponseMessageExtensions.cs" />
     <Compile Include="MWSApi\MessageTypes\Inventory.cs" />
     <Compile Include="MWSApi\MessageTypes\Product.cs" />
-    <Compile Include="MWSApi\MWS.cs" />
     <Compile Include="MWSApi\MwsCommands.cs" />
+    <Compile Include="MWSApi\MwsUtilities.cs" />
+    <Compile Include="MWSApi\MessageTypes\ProcessingReport.cs" />
+    <Compile Include="MWSApi\Results\ErrorResponse.cs" />
+    <Compile Include="MWSApi\Results\MwsResponse.cs" />
     <Compile Include="MWSApi\Results\ResponseMetadata.cs" />
     <Compile Include="MWSApi\Results\SubmitFeedResponse.cs" />
     <Compile Include="Program.cs" />

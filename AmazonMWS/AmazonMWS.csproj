@@ -165,6 +165,9 @@
     <Compile Include="src\Model\SKUOfferDetail.cs" />
     <Compile Include="src\Model\SKUOfferDetailList.cs" />
     <Compile Include="src\Model\Summary.cs" />
+    <Compile Include="src\Xsd\ProcessingReport.cs">
+      <DependentUpon>ProcessingReport.xsd</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -242,6 +245,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="src\Xsd\Price.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\ProcessingReport.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="src\Xsd\Product.xsd">

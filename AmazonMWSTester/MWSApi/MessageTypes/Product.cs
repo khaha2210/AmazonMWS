@@ -90,6 +90,37 @@ namespace AmazonMWSTester.Feeds
 		public DescriptionData DescriptionData { get; set; }
 		[XmlElement(ElementName = "ProductData")]
 		public ProductData ProductData { get; set; }
+
+		public Product() {
+
+		}
+
+		public Product(string sku, string productIdType, string productIdValue, string taxCode, DescriptionData descriptionData)
+		{
+			this.SKU = sku;
+			this.StandardProductID = new StandardProductID()
+			{
+				Type = productIdType,
+				Value = productIdValue
+			};
+			this.ProductTaxCode = taxCode;
+			this.DescriptionData = descriptionData;
+
+			this.ProductData = new ProductData
+			{
+				Health = new Health()
+				{
+					ProductType = new ProductType() 
+					{
+						HealthMisc = new HealthMisc()
+						{
+							Directions = "?",
+							Ingredients = "?"
+						}
+					}
+				}
+			};
+		}
 	}
 
 
