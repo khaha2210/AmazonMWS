@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{46A3F3AF-44AD-438B-BC0D-834F11E40B6A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>AmazonMWS</RootNamespace>
+    <AssemblyName>AmazonMWS</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>MarketplaceWebServiceProducts.MarketplaceWebServiceProductsSample</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MWSClientCsRuntime-1.0">
+      <HintPath>..\..\..\MWS\dist\MWSClientCsRuntime-1.0.dll</HintPath>
+    </Reference>
+    <Reference Include="MWSProducts_2011-10-01_v2017-03-22">
+      <HintPath>..\..\..\MWS\dist\MWSProducts_2011-10-01_v2017-03-22.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\MarketplaceWebServiceProducts.cs" />
+    <Compile Include="src\MarketplaceWebServiceProductsClient.cs" />
+    <Compile Include="src\MarketplaceWebServiceProductsConfig.cs" />
+    <Compile Include="src\MarketplaceWebServiceProductsException.cs" />
+    <Compile Include="src\MarketplaceWebServiceProductsSample.cs" />
+    <Compile Include="src\Mock\MarketplaceWebServiceProductsMock.cs" />
+    <Compile Include="src\Model\ASINIdentifier.cs" />
+    <Compile Include="src\Model\ASINListType.cs" />
+    <Compile Include="src\Model\ASINOfferDetail.cs" />
+    <Compile Include="src\Model\ASINOfferDetailList.cs" />
+    <Compile Include="src\Model\AttributeSetList.cs" />
+    <Compile Include="src\Model\BuyBoxEligibleOffers.cs" />
+    <Compile Include="src\Model\BuyBoxPrices.cs" />
+    <Compile Include="src\Model\BuyBoxPriceType.cs" />
+    <Compile Include="src\Model\Categories.cs" />
+    <Compile Include="src\Model\CompetitivePriceList.cs" />
+    <Compile Include="src\Model\CompetitivePriceType.cs" />
+    <Compile Include="src\Model\CompetitivePricingType.cs" />
+    <Compile Include="src\Model\DetailedShippingTimeType.cs" />
+    <Compile Include="src\Model\Error.cs" />
+    <Compile Include="src\Model\ErrorDetail.cs" />
+    <Compile Include="src\Model\FeeDetail.cs" />
+    <Compile Include="src\Model\FeeDetailList.cs" />
+    <Compile Include="src\Model\FeesEstimate.cs" />
+    <Compile Include="src\Model\FeesEstimateIdentifier.cs" />
+    <Compile Include="src\Model\FeesEstimateRequest.cs" />
+    <Compile Include="src\Model\FeesEstimateRequestList.cs" />
+    <Compile Include="src\Model\FeesEstimateResult.cs" />
+    <Compile Include="src\Model\FeesEstimateResultList.cs" />
+    <Compile Include="src\Model\GetCompetitivePricingForASINRequest.cs" />
+    <Compile Include="src\Model\GetCompetitivePricingForASINResponse.cs" />
+    <Compile Include="src\Model\GetCompetitivePricingForASINResult.cs" />
+    <Compile Include="src\Model\GetCompetitivePricingForSKURequest.cs" />
+    <Compile Include="src\Model\GetCompetitivePricingForSKUResponse.cs" />
+    <Compile Include="src\Model\GetCompetitivePricingForSKUResult.cs" />
+    <Compile Include="src\Model\GetLowestOfferListingsForASINRequest.cs" />
+    <Compile Include="src\Model\GetLowestOfferListingsForASINResponse.cs" />
+    <Compile Include="src\Model\GetLowestOfferListingsForASINResult.cs" />
+    <Compile Include="src\Model\GetLowestOfferListingsForSKURequest.cs" />
+    <Compile Include="src\Model\GetLowestOfferListingsForSKUResponse.cs" />
+    <Compile Include="src\Model\GetLowestOfferListingsForSKUResult.cs" />
+    <Compile Include="src\Model\GetLowestPricedOffersAsinIdentifier.cs" />
+    <Compile Include="src\Model\GetLowestPricedOffersForASINRequest.cs" />
+    <Compile Include="src\Model\GetLowestPricedOffersForASINResponse.cs" />
+    <Compile Include="src\Model\GetLowestPricedOffersForASINResult.cs" />
+    <Compile Include="src\Model\GetLowestPricedOffersForSKURequest.cs" />
+    <Compile Include="src\Model\GetLowestPricedOffersForSKUResponse.cs" />
+    <Compile Include="src\Model\GetLowestPricedOffersForSKUResult.cs" />
+    <Compile Include="src\Model\GetLowestPricedOffersSkuIdentifier.cs" />
+    <Compile Include="src\Model\GetMatchingProductForIdRequest.cs" />
+    <Compile Include="src\Model\GetMatchingProductForIdResponse.cs" />
+    <Compile Include="src\Model\GetMatchingProductForIdResult.cs" />
+    <Compile Include="src\Model\GetMatchingProductRequest.cs" />
+    <Compile Include="src\Model\GetMatchingProductResponse.cs" />
+    <Compile Include="src\Model\GetMatchingProductResult.cs" />
+    <Compile Include="src\Model\GetMyFeesEstimateRequest.cs" />
+    <Compile Include="src\Model\GetMyFeesEstimateResponse.cs" />
+    <Compile Include="src\Model\GetMyFeesEstimateResult.cs" />
+    <Compile Include="src\Model\GetMyPriceForASINRequest.cs" />
+    <Compile Include="src\Model\GetMyPriceForASINResponse.cs" />
+    <Compile Include="src\Model\GetMyPriceForASINResult.cs" />
+    <Compile Include="src\Model\GetMyPriceForSKURequest.cs" />
+    <Compile Include="src\Model\GetMyPriceForSKUResponse.cs" />
+    <Compile Include="src\Model\GetMyPriceForSKUResult.cs" />
+    <Compile Include="src\Model\GetProductCategoriesForASINRequest.cs" />
+    <Compile Include="src\Model\GetProductCategoriesForASINResponse.cs" />
+    <Compile Include="src\Model\GetProductCategoriesForASINResult.cs" />
+    <Compile Include="src\Model\GetProductCategoriesForSKURequest.cs" />
+    <Compile Include="src\Model\GetProductCategoriesForSKUResponse.cs" />
+    <Compile Include="src\Model\GetProductCategoriesForSKUResult.cs" />
+    <Compile Include="src\Model\GetServiceStatusRequest.cs" />
+    <Compile Include="src\Model\GetServiceStatusResponse.cs" />
+    <Compile Include="src\Model\GetServiceStatusResult.cs" />
+    <Compile Include="src\Model\IdentifierType.cs" />
+    <Compile Include="src\Model\IdListType.cs" />
+    <Compile Include="src\Model\IMWSResponse.cs" />
+    <Compile Include="src\Model\ListMatchingProductsRequest.cs" />
+    <Compile Include="src\Model\ListMatchingProductsResponse.cs" />
+    <Compile Include="src\Model\ListMatchingProductsResult.cs" />
+    <Compile Include="src\Model\LowestOfferListingList.cs" />
+    <Compile Include="src\Model\LowestOfferListingType.cs" />
+    <Compile Include="src\Model\LowestPrices.cs" />
+    <Compile Include="src\Model\LowestPriceType.cs" />
+    <Compile Include="src\Model\Message.cs" />
+    <Compile Include="src\Model\MessageList.cs" />
+    <Compile Include="src\Model\MoneyType.cs" />
+    <Compile Include="src\Model\NumberOfOfferListingsList.cs" />
+    <Compile Include="src\Model\NumberOfOffers.cs" />
+    <Compile Include="src\Model\OfferCountType.cs" />
+    <Compile Include="src\Model\OfferListingCountType.cs" />
+    <Compile Include="src\Model\OffersList.cs" />
+    <Compile Include="src\Model\OfferType.cs" />
+    <Compile Include="src\Model\Points.cs" />
+    <Compile Include="src\Model\PriceToEstimateFees.cs" />
+    <Compile Include="src\Model\PriceType.cs" />
+    <Compile Include="src\Model\Product.cs" />
+    <Compile Include="src\Model\ProductList.cs" />
+    <Compile Include="src\Model\ProductsUtil.cs" />
+    <Compile Include="src\Model\QualifiersType.cs" />
+    <Compile Include="src\Model\RelationshipList.cs" />
+    <Compile Include="src\Model\ResponseHeaderMetadata.cs" />
+    <Compile Include="src\Model\ResponseMetadata.cs" />
+    <Compile Include="src\Model\SalesRankList.cs" />
+    <Compile Include="src\Model\SalesRankType.cs" />
+    <Compile Include="src\Model\SellerFeedbackType.cs" />
+    <Compile Include="src\Model\SellerSKUIdentifier.cs" />
+    <Compile Include="src\Model\SellerSKUListType.cs" />
+    <Compile Include="src\Model\ServiceStatusEnum.cs" />
+    <Compile Include="src\Model\ShippingTimeType.cs" />
+    <Compile Include="src\Model\ShipsFromType.cs" />
+    <Compile Include="src\Model\SKUOfferDetail.cs" />
+    <Compile Include="src\Model\SKUOfferDetailList.cs" />
+    <Compile Include="src\Model\Summary.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="src\Xsd\amzn-base.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\amzn-envelope.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\amzn-header.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\AutoAccessory.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Beauty.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Books.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\CameraPhoto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\CE.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\ClothingAccessories.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Computers.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\FoodAndBeverages.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\GiftCards.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Health.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Home._TTH_.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Inventory.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Jewelry.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Listings.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Miscellaneous.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Music.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\MusicalInstruments.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Office.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Outdoors.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Override.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\PetSupplies.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Price.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Product.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\ProductImage.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Relationship.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Shoes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Sports.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\SportsMemorabilia.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\SWVG.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\TiresAndWheels.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Tools.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Toys.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\ToysBaby._TTH_.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Video.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="src\Xsd\Wireless.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
