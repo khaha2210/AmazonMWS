@@ -20,12 +20,75 @@ namespace AmazonMWSTester.MWSApi
 		private static string AwsAccessKeyId = "AKIAJ5Z2SMI4J7BZAFTA";
 		private static string MwsAuthToken = "amzn.mws.3eae8c90-75bc-b87f-7de2-069ce93f891a";
 		private static string SecretKey = "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";
+		private static string MarketplaceId = "ATVPDKIKX0DER";
 
 		static void Main(string[] args)
 		{
-			var client = new MwsClient(SellerId, MwsAuthToken, AwsAccessKeyId, SecretKey);
+			var client = new MwsClient(SellerId, MwsAuthToken, AwsAccessKeyId, SecretKey,MarketplaceId);
 
-			var product = new Product("54321", "UPC", "889133008882", "A_GEN_NOTAX", new DescriptionData()
+			var productList = new Product[1];
+			var product = new Product()
+			{
+				SKU = "123456789",
+				StandardProductID = new StandardProductID()
+				{
+					Type = StandardProductIDType.UPC,
+					Value = "762052949859"
+				},
+				ProductTaxCode = "A_GEN_NOTAX",
+				LaunchDate = new DateTime(2017, 7, 1),
+				Condition = new ConditionInfo()
+				{
+					ConditionType = ConditionType.New
+				},
+				DescriptionData = new ProductDescriptionData()
+				{
+					Title = @"Brooks Unisex 2 Qw-k Black/Nightlife/Brooks Brite Blue Athletic Shoe",
+					Brand = "Brooks",
+					Description = "These shoes are tight",
+					PackageWeight = new PositiveWeightDimension()
+					{
+						unitOfMeasure = WeightUnitOfMeasure.LB,
+						Value = 2
+					},
+					MSRP = new CurrencyAmount()
+					{
+						currency = BaseCurrencyCode.USD,
+						Value = 1000000.00m
+					},
+					Autographed = true,
+					TSDAgeWarning = ProductDescriptionDataTSDAgeWarning.not_suitable_under_3_years_supervision
+				},
+				PromoTag = new ProductPromoTag()
+				{
+					PromoTagType = ProductPromoTagPromoTagType.NewArrival,
+					EffectiveFromDate = new DateTime(2017,7,1),
+					EffectiveThroughDate = new DateTime(2017,8,1)
+				},
+				ProductData = new ProductProductData()
+				{
+					Item = new Shoes()
+					{
+						ClassificationData = new ShoesClassificationData()
+						{
+							CountryOfOrigin = "USA"
+						},
+						ClothingType = ShoesClothingType.Shoes
+					}
+				}
+			};
+
+			productList[0] = product;
+			var submitFeed = client.SubmitFeed<Product>(productList, AmazonEnvelopeMessageType.Product, new DateTime(2017, 7, 1), FeedTypes.ProductFeed, false);
+			submitFeed.Wait();
+
+			var submitResult = submitFeed.Result.Result;
+
+
+			Console.WriteLine(submitResult.SubmitFeedResult.FeedSubmissionInfo.FeedSubmissionId); 
+
+
+		/*	var product = new Product2("54321", "UPC", "889133008882", "A_GEN_NOTAX", new DescriptionData()
 			{
 				Brand = "test brand",
 				BulletPoint = new List<string> { "bull1","bull2"},
@@ -40,18 +103,18 @@ namespace AmazonMWSTester.MWSApi
 				Title = @"Adidas Yeezy Boost 350 - 7 ""Turtle Dove"" - AQ4832"
 			});
 
-			var productList = new List<Product>();
+			var productList = new List<Product2>();
 			productList.Add(product);
 
-			var submitFeed = client.SubmitFeed<Product>(productList, OperationType.Update, MessageChoiceType.Product, DateTime.UtcNow, FeedTypes.ProductFeed, true);
+			var submitFeed = client.SubmitFeed<Product2>(productList, OperationType2.Update, MessageChoiceType.Product, DateTime.UtcNow, FeedTypes.ProductFeed, true);
 			submitFeed.Wait();
 
 			var submitResult = submitFeed.Result.Result;
 
 
-			Console.WriteLine(submitResult.SubmitFeedResult.FeedSubmissionInfo.FeedSubmissionId);
+			Console.WriteLine(submitResult.SubmitFeedResult.FeedSubmissionInfo.FeedSubmissionId);*/
 
-			
+
 
 
 			/*

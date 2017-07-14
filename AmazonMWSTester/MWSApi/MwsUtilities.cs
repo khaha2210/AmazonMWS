@@ -35,13 +35,21 @@ namespace AmazonMWSTester.MWSApi
 		private static readonly Regex pct2FPtn = new Regex("%2[f|F]");
 
 		public static string SerializeXml<T>(T body) {
-			var xmlSerializer = new XmlSerializer(typeof(T));
+			try {
+				var xmlSerializer = new XmlSerializer(typeof(T));
+				using (var textWriter = new StringWriter())
+				{
+					xmlSerializer.Serialize(textWriter, body);
+					return textWriter.ToString();
+				}
 
-			using (var textWriter = new StringWriter())
-			{
-				xmlSerializer.Serialize(textWriter, body);
-				return textWriter.ToString();
 			}
+			catch (Exception ex) 
+			{
+				return null;
+			}
+
+			
 		}
 
 		public static T Deserialize<T>(string input) 

@@ -66,12 +66,385 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MWSApi\Common\amzn-base.cs" />
+    <Compile Include="Amazon\AdditionalProductInformation.cs">
+      <DependentUpon>AdditionalProductInformation.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\AdditionalProductInformation.designer.cs" />
+    <Compile Include="Amazon\Amazon.cs">
+      <DependentUpon>Amazon.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Amazon.designer.cs" />
+    <Compile Include="Amazon\amzn-base.cs">
+      <DependentUpon>amzn-base.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\amzn-base.designer.cs" />
+    <Compile Include="Amazon\amzn-envelope.cs">
+      <DependentUpon>amzn-envelope.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\amzn-envelope.designer.cs" />
+    <Compile Include="Amazon\amzn-header.cs">
+      <DependentUpon>amzn-header.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\amzn-header.designer.cs" />
+    <Compile Include="Amazon\Arts.cs">
+      <DependentUpon>Arts.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Arts.designer.cs" />
+    <Compile Include="Amazon\AttributeGroups.cs">
+      <DependentUpon>AttributeGroups.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\AttributeGroups.designer.cs" />
+    <Compile Include="Amazon\AutoAccessory.cs">
+      <DependentUpon>AutoAccessory.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\AutoAccessory.designer.cs" />
+    <Compile Include="Amazon\Baby.cs">
+      <DependentUpon>Baby.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Baby.designer.cs" />
+    <Compile Include="Amazon\Beauty.cs">
+      <DependentUpon>Beauty.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Beauty.designer.cs" />
+    <Compile Include="Amazon\Books.cs">
+      <DependentUpon>Books.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Books.designer.cs" />
+    <Compile Include="Amazon\CameraPhoto.cs">
+      <DependentUpon>CameraPhoto.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\CameraPhoto.designer.cs" />
+    <Compile Include="Amazon\CatPIL.cs">
+      <DependentUpon>CatPIL.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\CatPIL.designer.cs" />
+    <Compile Include="Amazon\CE.cs">
+      <DependentUpon>CE.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\CE.designer.cs" />
+    <Compile Include="Amazon\ClothingAccessories.cs">
+      <DependentUpon>ClothingAccessories.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\ClothingAccessories.designer.cs" />
+    <Compile Include="Amazon\Coins.cs">
+      <DependentUpon>Coins.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Coins.designer.cs" />
+    <Compile Include="Amazon\Collectibles.cs">
+      <DependentUpon>Collectibles.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Collectibles.designer.cs" />
+    <Compile Include="Amazon\Computers.cs">
+      <DependentUpon>Computers.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Computers.designer.cs" />
+    <Compile Include="Amazon\Customer.cs">
+      <DependentUpon>Customer.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Customer.designer.cs" />
+    <Compile Include="Amazon\CustomerAddress.cs">
+      <DependentUpon>CustomerAddress.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\CustomerAddress.designer.cs" />
+    <Compile Include="Amazon\EntertainmentCollectibles.cs">
+      <DependentUpon>EntertainmentCollectibles.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\EntertainmentCollectibles.designer.cs" />
+    <Compile Include="Amazon\EUCompliance.cs">
+      <DependentUpon>EUCompliance.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\EUCompliance.designer.cs" />
+    <Compile Include="Amazon\FBA.cs">
+      <DependentUpon>FBA.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\FBA.designer.cs" />
+    <Compile Include="Amazon\FoodAndBeverages.cs">
+      <DependentUpon>FoodAndBeverages.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\FoodAndBeverages.designer.cs" />
+    <Compile Include="Amazon\FoodServiceAndJanSan.cs">
+      <DependentUpon>FoodServiceAndJanSan.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\FoodServiceAndJanSan.designer.cs" />
+    <Compile Include="Amazon\FulfillmentCenter.cs">
+      <DependentUpon>FulfillmentCenter.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\FulfillmentCenter.designer.cs" />
+    <Compile Include="Amazon\FulfillmentOrderCancellationRequest.cs">
+      <DependentUpon>FulfillmentOrderCancellationRequest.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\FulfillmentOrderCancellationRequest.designer.cs" />
+    <Compile Include="Amazon\FulfillmentOrderRequest.cs">
+      <DependentUpon>FulfillmentOrderRequest.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\FulfillmentOrderRequest.designer.cs" />
+    <Compile Include="Amazon\Furniture.cs">
+      <DependentUpon>Furniture.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Furniture.designer.cs" />
+    <Compile Include="Amazon\GiftCards.cs">
+      <DependentUpon>GiftCards.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\GiftCards.designer.cs" />
+    <Compile Include="Amazon\Gourmet.cs">
+      <DependentUpon>Gourmet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Gourmet.designer.cs" />
+    <Compile Include="Amazon\Health.cs">
+      <DependentUpon>Health.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Health.designer.cs" />
+    <Compile Include="Amazon\Home.cs">
+      <DependentUpon>Home.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Home.designer.cs" />
+    <Compile Include="Amazon\HomeImprovement.cs">
+      <DependentUpon>HomeImprovement.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\HomeImprovement.designer.cs" />
+    <Compile Include="Amazon\Image.cs">
+      <DependentUpon>Image.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Image.designer.cs" />
+    <Compile Include="Amazon\Industrial.cs">
+      <DependentUpon>Industrial.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Industrial.designer.cs" />
+    <Compile Include="Amazon\Inventory.cs">
+      <DependentUpon>Inventory.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Inventory.designer.cs" />
+    <Compile Include="Amazon\Item.cs">
+      <DependentUpon>Item.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Item.designer.cs" />
+    <Compile Include="Amazon\Jewelry.cs">
+      <DependentUpon>Jewelry.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Jewelry.designer.cs" />
+    <Compile Include="Amazon\LabSupplies.cs">
+      <DependentUpon>LabSupplies.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\LabSupplies.designer.cs" />
+    <Compile Include="Amazon\LargeAppliances.cs">
+      <DependentUpon>LargeAppliances.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\LargeAppliances.designer.cs" />
+    <Compile Include="Amazon\Lighting.cs">
+      <DependentUpon>Lighting.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Lighting.designer.cs" />
+    <Compile Include="Amazon\Listings.cs">
+      <DependentUpon>Listings.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Listings.designer.cs" />
+    <Compile Include="Amazon\ListingSummary.cs">
+      <DependentUpon>ListingSummary.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\ListingSummary.designer.cs" />
+    <Compile Include="Amazon\Loyalty.cs">
+      <DependentUpon>Loyalty.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Loyalty.designer.cs" />
+    <Compile Include="Amazon\Luggage.cs">
+      <DependentUpon>Luggage.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Luggage.designer.cs" />
+    <Compile Include="Amazon\LuxuryBeauty.cs">
+      <DependentUpon>LuxuryBeauty.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\LuxuryBeauty.designer.cs" />
+    <Compile Include="Amazon\MaterialHandling.cs">
+      <DependentUpon>MaterialHandling.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\MaterialHandling.designer.cs" />
+    <Compile Include="Amazon\MechanicalFasteners.cs">
+      <DependentUpon>MechanicalFasteners.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\MechanicalFasteners.designer.cs" />
+    <Compile Include="Amazon\Miscellaneous.cs">
+      <DependentUpon>Miscellaneous.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Miscellaneous.designer.cs" />
+    <Compile Include="Amazon\Motorcycles.cs">
+      <DependentUpon>Motorcycles.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Motorcycles.designer.cs" />
+    <Compile Include="Amazon\MultiChannelOrderReport.cs">
+      <DependentUpon>MultiChannelOrderReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\MultiChannelOrderReport.designer.cs" />
+    <Compile Include="Amazon\Music.cs">
+      <DependentUpon>Music.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Music.designer.cs" />
+    <Compile Include="Amazon\MusicalInstruments.cs">
+      <DependentUpon>MusicalInstruments.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\MusicalInstruments.designer.cs" />
+    <Compile Include="Amazon\NavigationReport.cs">
+      <DependentUpon>NavigationReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\NavigationReport.designer.cs" />
+    <Compile Include="Amazon\Offer.cs">
+      <DependentUpon>Offer.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Offer.designer.cs" />
+    <Compile Include="Amazon\Office.cs">
+      <DependentUpon>Office.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Office.designer.cs" />
+    <Compile Include="Amazon\OrderAcknowledgement.cs">
+      <DependentUpon>OrderAcknowledgement.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\OrderAcknowledgement.designer.cs" />
+    <Compile Include="Amazon\OrderAdjustment.cs">
+      <DependentUpon>OrderAdjustment.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\OrderAdjustment.designer.cs" />
+    <Compile Include="Amazon\OrderFulfillment.cs">
+      <DependentUpon>OrderFulfillment.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\OrderFulfillment.designer.cs" />
+    <Compile Include="Amazon\OrderNotificationReport.cs">
+      <DependentUpon>OrderNotificationReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\OrderNotificationReport.designer.cs" />
+    <Compile Include="Amazon\OrderReport.cs">
+      <DependentUpon>OrderReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\OrderReport.designer.cs" />
+    <Compile Include="Amazon\Outdoors.cs">
+      <DependentUpon>Outdoors.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Outdoors.designer.cs" />
+    <Compile Include="Amazon\Override.cs">
+      <DependentUpon>Override.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Override.designer.cs" />
+    <Compile Include="Amazon\PaymentMethod.cs">
+      <DependentUpon>PaymentMethod.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\PaymentMethod.designer.cs" />
+    <Compile Include="Amazon\PetSupplies.cs">
+      <DependentUpon>PetSupplies.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\PetSupplies.designer.cs" />
+    <Compile Include="Amazon\PowerTransmission.cs">
+      <DependentUpon>PowerTransmission.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\PowerTransmission.designer.cs" />
+    <Compile Include="Amazon\Price.cs">
+      <DependentUpon>Price.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Price.designer.cs" />
+    <Compile Include="Amazon\ProcessingReport.cs">
+      <DependentUpon>ProcessingReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\ProcessingReport.designer.cs" />
+    <Compile Include="Amazon\Product.cs">
+      <DependentUpon>Product.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Product.designer.cs" />
+    <Compile Include="Amazon\ProductAttributes.cs">
+      <DependentUpon>ProductAttributes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\ProductAttributes.designer.cs" />
+    <Compile Include="Amazon\ProductClothing.cs">
+      <DependentUpon>ProductClothing.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\ProductClothing.designer.cs" />
+    <Compile Include="Amazon\ProductImage.cs">
+      <DependentUpon>ProductImage.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\ProductImage.designer.cs" />
+    <Compile Include="Amazon\ProfessionalHealthCare.cs">
+      <DependentUpon>ProfessionalHealthCare.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\ProfessionalHealthCare.designer.cs" />
+    <Compile Include="Amazon\RawMaterials.cs">
+      <DependentUpon>RawMaterials.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\RawMaterials.designer.cs" />
+    <Compile Include="Amazon\Relationship.cs">
+      <DependentUpon>Relationship.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Relationship.designer.cs" />
+    <Compile Include="Amazon\ReverseFeed.cs">
+      <DependentUpon>ReverseFeed.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\ReverseFeed.designer.cs" />
+    <Compile Include="Amazon\SettlementReport.cs">
+      <DependentUpon>SettlementReport.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\SettlementReport.designer.cs" />
+    <Compile Include="Amazon\Shoes.cs">
+      <DependentUpon>Shoes.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Shoes.designer.cs" />
+    <Compile Include="Amazon\Sports.cs">
+      <DependentUpon>Sports.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Sports.designer.cs" />
+    <Compile Include="Amazon\SportsMemorabilia.cs">
+      <DependentUpon>SportsMemorabilia.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\SportsMemorabilia.designer.cs" />
+    <Compile Include="Amazon\Store.cs">
+      <DependentUpon>Store.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Store.designer.cs" />
+    <Compile Include="Amazon\SWVG.cs">
+      <DependentUpon>SWVG.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\SWVG.designer.cs" />
+    <Compile Include="Amazon\ThreeDPrinting.cs">
+      <DependentUpon>ThreeDPrinting.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\ThreeDPrinting.designer.cs" />
+    <Compile Include="Amazon\TiresAndWheels.cs">
+      <DependentUpon>TiresAndWheels.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\TiresAndWheels.designer.cs" />
+    <Compile Include="Amazon\Tools.cs">
+      <DependentUpon>Tools.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Tools.designer.cs" />
+    <Compile Include="Amazon\Toys.cs">
+      <DependentUpon>Toys.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Toys.designer.cs" />
+    <Compile Include="Amazon\ToysBaby.cs">
+      <DependentUpon>ToysBaby.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\ToysBaby.designer.cs" />
+    <Compile Include="Amazon\TypeDefinitions.cs">
+      <DependentUpon>TypeDefinitions.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\TypeDefinitions.designer.cs" />
+    <Compile Include="Amazon\Video.cs">
+      <DependentUpon>Video.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Video.designer.cs" />
+    <Compile Include="Amazon\WebstoreItem.cs">
+      <DependentUpon>WebstoreItem.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\WebstoreItem.designer.cs" />
+    <Compile Include="Amazon\WineAndAlcohol.cs">
+      <DependentUpon>WineAndAlcohol.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\WineAndAlcohol.designer.cs" />
+    <Compile Include="Amazon\Wireless.cs">
+      <DependentUpon>Wireless.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Amazon\Wireless.designer.cs" />
+    <Compile Include="MWSApi\Common\AmazonEnvelope.cs" />
     <Compile Include="MWSApi\Common\Envelope.cs" />
     <Compile Include="MWSApi\Common\Header.cs" />
+    <Compile Include="MWSApi\Common\MessageTypes\Product.cs" />
     <Compile Include="MWSApi\HttpResponseMessageExtensions.cs" />
     <Compile Include="MWSApi\MessageTypes\Inventory.cs" />
-    <Compile Include="MWSApi\MessageTypes\Product.cs" />
+    <Compile Include="MWSApi\MessageTypes\Product2.cs" />
     <Compile Include="MWSApi\MwsCommands.cs" />
     <Compile Include="MWSApi\MwsUtilities.cs" />
     <Compile Include="MWSApi\MessageTypes\ProcessingReport.cs" />
@@ -83,7 +456,288 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Amazon\AdditionalProductInformation.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Amazon.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\amzn-base.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\amzn-envelope.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\amzn-header.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Arts.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\AttributeGroups.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\AutoAccessory.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Baby.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Beauty.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Books.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\CameraPhoto.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\CatPIL.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\CE.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\ClothingAccessories.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Coins.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Collectibles.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Computers.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Customer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\CustomerAddress.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\EntertainmentCollectibles.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\EUCompliance.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\FBA.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\FoodAndBeverages.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\FoodServiceAndJanSan.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\FulfillmentCenter.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\FulfillmentOrderCancellationRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\FulfillmentOrderRequest.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Furniture.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\GiftCards.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Gourmet.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Health.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Home.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\HomeImprovement.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Image.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Industrial.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Inventory.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Jewelry.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\LabSupplies.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\LargeAppliances.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Lighting.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Listings.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\ListingSummary.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Loyalty.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Luggage.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\LuxuryBeauty.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\MaterialHandling.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\MechanicalFasteners.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Miscellaneous.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Motorcycles.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\MultiChannelOrderReport.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Music.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\MusicalInstruments.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\NavigationReport.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Offer.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Office.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\OrderAcknowledgement.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\OrderAdjustment.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\OrderFulfillment.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\OrderNotificationReport.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\OrderReport.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Outdoors.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Override.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\PaymentMethod.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\PetSupplies.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\PowerTransmission.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Price.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\ProcessingReport.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Product.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\ProductAttributes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\ProductClothing.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\ProductImage.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\ProfessionalHealthCare.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\RawMaterials.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Relationship.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\ReverseFeed.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\SettlementReport.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Shoes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Sports.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\SportsMemorabilia.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Store.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\SWVG.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\ThreeDPrinting.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\TiresAndWheels.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Tools.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Toys.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\ToysBaby.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\TypeDefinitions.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Video.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\WebstoreItem.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\WineAndAlcohol.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Amazon\Wireless.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

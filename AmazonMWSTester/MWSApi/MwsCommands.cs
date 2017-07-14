@@ -1,4 +1,5 @@
 ﻿using AmazonMWSTester.Common;
+using AmazonMWSTester.MWSApi.Common;
 using AmazonMWSTester.MWSApi.MessageTypes;
 using AmazonMWSTester.MWSApi.Results;
 using System;
@@ -32,83 +33,104 @@ namespace AmazonMWSTester.MWSApi
 		public string MwsAuthToken { get; set; }
 		public string AwsAccessKeyId { get; set; }
 		public string SecretKey { get; set; }
+		public string MarketPlaceId { get; set; }
 
 		static MwsClient()
 		{
 			Client = new HttpClient();
 		}
 
-		public MwsClient(string sellerId, string mwsAuthToken, string awsAccessKeyId, string secretKey) {
+		public MwsClient(string sellerId, string mwsAuthToken, string awsAccessKeyId, string secretKey, string marketPlaceId) {
 			this.SellerId = sellerId;
 			this.MwsAuthToken = mwsAuthToken;
 			this.AwsAccessKeyId = awsAccessKeyId;
 			this.SecretKey = secretKey;
+			this.MarketPlaceId = marketPlaceId;
 		}
 
-		public async Task<MwsResponse<SubmitFeedResponse>> SubmitFeed<T>(List<T> messageItems, string operationType, MessageChoiceType messageChoice, DateTime effectiveDate, string feedType, bool purgeAndReplace = false) where T : MessageChoice 
+		private static AmazonEnvelope InstantiateEnvelope<T>(string merchantId, string marketplaceName, bool purgeAndReplace, T[] messageItems, AmazonEnvelopeMessageType messageType, DateTime effectiveDate, AmazonEnvelopeMessageOperationType operationType = AmazonEnvelopeMessageOperationType.Update) {
+			var header = new Header()
+			{
+				DocumentVersion = "1.0",
+				MerchantIdentifier = merchantId
+			};
+
+
+			var messageLength = messageItems.Length;
+			var messageList = new AmazonEnvelopeMessage[messageLength];
+			var currentId = 1;
+
+			for (var i = 0; i < messageLength; i++)
+			{
+				var messageItem = messageItems[i];
+				var message = new AmazonEnvelopeMessage()
+				{
+					Item = messageItem,
+					MessageID = currentId++.ToString(),
+					OperationType = operationType
+				};
+
+				messageList[i] = message;
+			}
+
+			var envelope = new AmazonEnvelope()
+			{
+				EffectiveDate = effectiveDate,
+				Header = header,
+				MarketplaceName = marketplaceName,
+				MessageType = messageType,
+				PurgeAndReplace = purgeAndReplace,
+				Message = messageList
+			};
+
+			return envelope;
+		}
+
+
+		public async Task<MwsResponse<SubmitFeedResponse>> SubmitFeed<T>(T[] messageItems, AmazonEnvelopeMessageType messageType, DateTime effectiveDate, string feedType, bool purgeAndReplace = false, AmazonEnvelopeMessageOperationType operationType = AmazonEnvelopeMessageOperationType.Update) 
 		{
-			if (typeof(T).Name != messageChoice.ToString())
+			if (typeof(T).Name != messageType.ToString())
+			{
 				return new MwsResponse<SubmitFeedResponse>
 				{
 					Error = new ErrorResponse(),
 					ExceptionMessage = "Feed items do not match given messageChoice"
 				};
+			}
+				
 
 			var parameters = new SortedDictionary<string, string>(new SortDecendingBytes());
-		
-			var envelope = new Envelope();
-			envelope.noNamespaceSchemaLocation = NamespaceSchemaLocation;
-			envelope.PurgeAndReplace = purgeAndReplace;
-			envelope.MessageType = messageChoice.ToString();
-			envelope.EffectiveDate = effectiveDate;
 
-			var messages = new List<Message>();
-			var currentId = 1;
-
-			foreach (var item in messageItems) {
-				if (item.GetType().Name != messageChoice.ToString())
-				{
-					return null;
-				}
-				var message = new Message();
-				message.MessageChoice = messageChoice;
-				message.Choice = item;
-				message.OperationType = operationType;
-				message.MessageId = currentId++;
-				messages.Add(message);
-			}
-
-
-			var header = new Header();
-			var currentVersion = 1.0;
-			header.DocumentVersion = currentVersion++.ToString("F1");
-			header.MerchantIdentifier = this.SellerId;
-
-			envelope.Header = header;
-			envelope.Message = messages;
+			var envelope = InstantiateEnvelope<T>(this.SellerId, this.MarketPlaceId, purgeAndReplace, messageItems, messageType, effectiveDate, operationType);
 
 			parameters["PurgeAndReplace"] = purgeAndReplace.ToString().ToLower();
 			parameters["FeedType"] = feedType;
 
 			try {
-				var result = await SendMws<Envelope>(envelope, parameters, "SubmitFeed");
+				var result = await SendMws<AmazonEnvelope>(envelope, parameters, "SubmitFeed");
 				var resultText = await result.Content.ReadAsStringAsync();
 
 				var submitFeedResult = MwsUtilities.Deserialize<SubmitFeedResponse>(resultText);
 
 				if (submitFeedResult != null)
+				{
 					return new MwsResponse<SubmitFeedResponse>
 					{
 						Result = submitFeedResult
 					};
+				}
+					
 
 				var submitFeedError = MwsUtilities.Deserialize<ErrorResponse>(resultText);
 				
 				if (submitFeedError != null)
+				{
 					return new MwsResponse<SubmitFeedResponse>
 					{
 						Error = submitFeedError
 					};
+				}
+					
 
 				return new MwsResponse<SubmitFeedResponse>
 				{
@@ -126,32 +148,41 @@ namespace AmazonMWSTester.MWSApi
 			}
 		}
 
-		public async Task<MwsResponse<ProcessingReport>> GetFeedResult(string feedSubmissionId) {
+		public async Task<MwsResponse<List<ProcessingReport>>> GetFeedResult(string feedSubmissionId) {
 			var parameters = new SortedDictionary<string, string>(new SortDecendingBytes());
 			parameters["FeedSubmissionId"] = feedSubmissionId;
 			
 			try
 			{
-				var result = await SendMws<Envelope>(null, parameters, "GetFeedSubmissionResult");
+				var result = await SendMws<AmazonEnvelope>(null, parameters, "GetFeedSubmissionResult");
 				var resultText = await result.Content.ReadAsStringAsync();
 
-				var getFeedResult = MwsUtilities.Deserialize<Envelope>(resultText);
+				var getFeedResult = MwsUtilities.Deserialize<AmazonEnvelope>(resultText);
 
-				if (getFeedResult != null)
-					return new MwsResponse<ProcessingReport>
+				if (getFeedResult != null) 
+				{
+					var reportList = new List<ProcessingReport>();
+					foreach (var message in getFeedResult.Message) {
+						reportList.Add(message.Item as ProcessingReport);
+					}
+					return new MwsResponse<List<ProcessingReport>>
 					{
-						Result = getFeedResult.Message[0].Choice as ProcessingReport
+						Result = reportList
 					};
+				}
 
 				var getFeedError = MwsUtilities.Deserialize<ErrorResponse>(resultText);
 
 				if (getFeedError != null)
-					return new MwsResponse<ProcessingReport>
+				{
+					return new MwsResponse<List<ProcessingReport>>
 					{
 						Error = getFeedError
 					};
+				}
+					
 
-				return new MwsResponse<ProcessingReport>
+				return new MwsResponse<List<ProcessingReport>>
 				{
 					Error = new ErrorResponse(),
 					ExceptionMessage = "Unknown Error"
@@ -160,7 +191,7 @@ namespace AmazonMWSTester.MWSApi
 			}
 			catch (Exception ex)
 			{
-				return new MwsResponse<ProcessingReport>
+				return new MwsResponse<List<ProcessingReport>>
 				{
 					Error = new ErrorResponse(),
 					ExceptionMessage = ex.ToString()
@@ -175,6 +206,7 @@ namespace AmazonMWSTester.MWSApi
 		{
 			var xmlBody = "";
 			if (bodyObject != null) {
+				var envelope = bodyObject as AmazonEnvelope;
 				xmlBody = MwsUtilities.SerializeXml<T>(bodyObject);
 				xmlBody = encoding.Replace(xmlBody, "", 1);
 

@@ -11,10 +11,12 @@ using System.Xml.Serialization;
 namespace AmazonMWSTester.Common
 {
 	[XmlRoot(ElementName = "AmazonEnvelope")]
-	public class Envelope
+	public class Envelope2
 	{
 		[XmlAttribute(Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
 		public string noNamespaceSchemaLocation { get; set; }
+
+
 
 
 
@@ -31,9 +33,9 @@ namespace AmazonMWSTester.Common
 		public DateTime EffectiveDate { get; set; }
 
 		[XmlElement(ElementName = "Message")]
-		public List<Message> Message { get; set; }
+		public List<Message2> Message { get; set; }
 
-		public Envelope() {
+		public Envelope2() {
 			
 		}
 
@@ -42,7 +44,7 @@ namespace AmazonMWSTester.Common
 	}
 
 	[XmlRoot(ElementName = "Message")]
-	public class Message
+	public class Message2
 	{
 		[XmlElement(ElementName = "MessageID")]
 		public int MessageId { get; set; }
@@ -51,10 +53,10 @@ namespace AmazonMWSTester.Common
 		public string OperationType { get; set; }
 
 		[XmlChoiceIdentifier("MessageChoice")]
-		[XmlElement("Product",Type = typeof(Product))]
+		[XmlElement("Product",Type = typeof(Product2))]
 		[XmlElement("Inventory", Type = typeof(Inventory))]
-		[XmlElement("ProcessingReport", Type = typeof(ProcessingReport))]
-		public MessageChoice Choice { get; set; }
+		[XmlElement("ProcessingReport", Type = typeof(ProcessingReport2))]
+		public MessageChoice2 Choice { get; set; }
 
 		[XmlIgnore]
 		public MessageChoiceType MessageChoice;
@@ -72,17 +74,17 @@ namespace AmazonMWSTester.Common
 	}
 
 
-	public static class OperationType
+	public static class OperationType2
 	{
 		public const string Update = "Update";
 		public const string Delete = "Delete";
 		public const string PartialUpdate = "PartialUpdate";
 	}
 
-	public class MessageChoice { }
+	public class MessageChoice2 { }
 
 
-	public static class MessageType
+	public static class MessageType2
 	{
 		public const string CatPIL = "CatPIL";
 		public const string Customer = "Customer";

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AmazonMWSTester.Feeds
 {
-	public class Inventory : MessageChoice
+	public class Inventory : MessageChoice2
 	{
 		public Inventory () {
 

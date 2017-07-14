@@ -13,16 +13,16 @@ namespace AmazonMWSTester.MWSApi.MessageTypes
 	[System.ComponentModel.DesignerCategoryAttribute("code")]
 	[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
 	[System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
-	public partial class ProcessingReport : MessageChoice
+	public partial class ProcessingReport2 : MessageChoice2
 	{
 
 		private string documentTransactionIDField;
 
-		private ProcessingReportStatusCode statusCodeField;
+		private ProcessingReportStatusCode2 statusCodeField;
 
-		private ProcessingReportProcessingSummary processingSummaryField;
+		private ProcessingReportProcessingSummary2 processingSummaryField;
 
-		private ProcessingReportResult[] resultField;
+		private ProcessingReportResult2[] resultField;
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlElementAttribute(DataType = "positiveInteger")]
@@ -39,7 +39,7 @@ namespace AmazonMWSTester.MWSApi.MessageTypes
 		}
 
 		/// <remarks/>
-		public ProcessingReportStatusCode StatusCode
+		public ProcessingReportStatusCode2 StatusCode
 		{
 			get
 			{
@@ -52,7 +52,7 @@ namespace AmazonMWSTester.MWSApi.MessageTypes
 		}
 
 		/// <remarks/>
-		public ProcessingReportProcessingSummary ProcessingSummary
+		public ProcessingReportProcessingSummary2 ProcessingSummary
 		{
 			get
 			{
@@ -66,7 +66,7 @@ namespace AmazonMWSTester.MWSApi.MessageTypes
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlElementAttribute("Result")]
-		public ProcessingReportResult[] Result
+		public ProcessingReportResult2[] Result
 		{
 			get
 			{
@@ -83,7 +83,7 @@ namespace AmazonMWSTester.MWSApi.MessageTypes
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
 	[System.SerializableAttribute()]
 	[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-	public enum ProcessingReportStatusCode
+	public enum ProcessingReportStatusCode2
 	{
 
 		/// <remarks/>
@@ -102,7 +102,7 @@ namespace AmazonMWSTester.MWSApi.MessageTypes
 	[System.Diagnostics.DebuggerStepThroughAttribute()]
 	[System.ComponentModel.DesignerCategoryAttribute("code")]
 	[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-	public partial class ProcessingReportProcessingSummary
+	public partial class ProcessingReportProcessingSummary2
 	{
 
 		private string messagesProcessedField;
@@ -176,18 +176,18 @@ namespace AmazonMWSTester.MWSApi.MessageTypes
 	[System.Diagnostics.DebuggerStepThroughAttribute()]
 	[System.ComponentModel.DesignerCategoryAttribute("code")]
 	[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-	public partial class ProcessingReportResult
+	public partial class ProcessingReportResult2
 	{
 
 		private string messageIDField;
-
-		private ProcessingReportResultResultCode resultCodeField;
+		
+		private ProcessingReportResultResultCode2 resultCodeField;
 
 		private string resultMessageCodeField;
 
 		private string resultDescriptionField;
 
-		private ProcessingReportResultAdditionalInfo additionalInfoField;
+		private ProcessingReportResultAdditionalInfo2 additionalInfoField;
 
 		/// <remarks/>
 		[System.Xml.Serialization.XmlElementAttribute(DataType = "nonNegativeInteger")]
@@ -204,7 +204,7 @@ namespace AmazonMWSTester.MWSApi.MessageTypes
 		}
 
 		/// <remarks/>
-		public ProcessingReportResultResultCode ResultCode
+		public ProcessingReportResultResultCode2 ResultCode
 		{
 			get
 			{
@@ -244,7 +244,7 @@ namespace AmazonMWSTester.MWSApi.MessageTypes
 		}
 
 		/// <remarks/>
-		public ProcessingReportResultAdditionalInfo AdditionalInfo
+		public ProcessingReportResultAdditionalInfo2 AdditionalInfo
 		{
 			get
 			{
@@ -261,7 +261,7 @@ namespace AmazonMWSTester.MWSApi.MessageTypes
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
 	[System.SerializableAttribute()]
 	[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-	public enum ProcessingReportResultResultCode
+	public enum ProcessingReportResultResultCode2
 	{
 
 		/// <remarks/>
@@ -277,7 +277,7 @@ namespace AmazonMWSTester.MWSApi.MessageTypes
 	[System.Diagnostics.DebuggerStepThroughAttribute()]
 	[System.ComponentModel.DesignerCategoryAttribute("code")]
 	[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-	public partial class ProcessingReportResultAdditionalInfo
+	public partial class ProcessingReportResultAdditionalInfo2
 	{
 
 		private string sKUField;
