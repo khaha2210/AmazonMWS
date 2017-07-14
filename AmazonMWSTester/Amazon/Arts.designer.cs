@@ -12,9 +12,9 @@ namespace AmazonMWSTester.Amazon {
     using System.Xml.Schema;
     using System.ComponentModel;
     using System.Collections.Generic;
-    
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.32990")]
+	using static AmazonMWSTester.Amazon.Luggage;
+
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.32990")]
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]

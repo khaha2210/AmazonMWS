@@ -1083,4 +1083,30 @@ namespace AmazonMWSTester.Amazon {
     public bool deleteSpecified {get; set;}
 
     }
+
+	public partial class DataTransferRateValueValue
+	{
+		unitValue value { get; set; }
+	}
+
+	public enum unitValue
+	{
+		Bps,
+		bps,
+		Kbps,
+		Mbps,
+		Gbps,
+		KBps,
+		MBps,
+		GBps
+	}
+
+	public partial class PositiveNonZeroWeightValueValue
+	{
+		unitValue value { get; set; } //TODO I think this is messed up
+	}
+	public partial class RestrictedDimensionValueValue
+	{
+
+	}
 }

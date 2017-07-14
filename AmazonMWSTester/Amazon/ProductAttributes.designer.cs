@@ -6069,14 +6069,10 @@ namespace AmazonMWSTester.Amazon {
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.32990")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
+    
     public partial class voltage {
         
-        private voltageValue valueField;
+       
         
         private BooleanType deleteField;
         
@@ -6084,16 +6080,10 @@ namespace AmazonMWSTester.Amazon {
         
     public voltageValue value {get; set;}
 
-    [System.Xml.Serialization.XmlAttributeAttribute()]
-    public BooleanType delete {get; set;}
-
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool deleteSpecified {get; set;}
+   
 
         
-        public voltage() {
-            this.valueField = new voltageValue();
-        }
+      
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.32990")]
@@ -13938,14 +13928,9 @@ namespace AmazonMWSTester.Amazon {
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.32990")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
+    
     public partial class capacitance {
         
-        private capacitanceValue valueField;
         
         private BooleanType deleteField;
         
@@ -13953,8 +13938,7 @@ namespace AmazonMWSTester.Amazon {
         
     public capacitanceValue value {get; set;}
 
-    [System.Xml.Serialization.XmlAttributeAttribute()]
-    public BooleanType delete {get; set;}
+    
 
     [System.Xml.Serialization.XmlIgnoreAttribute()]
     public bool deleteSpecified {get; set;}
@@ -16152,14 +16136,9 @@ namespace AmazonMWSTester.Amazon {
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.32990")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
+   
     public partial class inductance {
         
-        private inductanceValue valueField;
         
         private BooleanType deleteField;
         
@@ -16167,16 +16146,13 @@ namespace AmazonMWSTester.Amazon {
         
     public inductanceValue value {get; set;}
 
-    [System.Xml.Serialization.XmlAttributeAttribute()]
-    public BooleanType delete {get; set;}
+   
 
     [System.Xml.Serialization.XmlIgnoreAttribute()]
     public bool deleteSpecified {get; set;}
 
         
-        public inductance() {
-            this.valueField = new inductanceValue();
-        }
+      
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.32990")]

@@ -1,5 +1,5 @@
-﻿using AmazonMWSTester.Common;
-using AmazonMWSTester.MWSApi.Common;
+﻿using AmazonMWSTester.Amazon;
+using AmazonMWSTester.Common;
 using AmazonMWSTester.MWSApi.MessageTypes;
 using AmazonMWSTester.MWSApi.Results;
 using System;
@@ -48,21 +48,19 @@ namespace AmazonMWSTester.MWSApi
 			this.MarketPlaceId = marketPlaceId;
 		}
 
-		private static AmazonEnvelope InstantiateEnvelope<T>(string merchantId, string marketplaceName, bool purgeAndReplace, T[] messageItems, AmazonEnvelopeMessageType messageType, DateTime effectiveDate, AmazonEnvelopeMessageOperationType operationType = AmazonEnvelopeMessageOperationType.Update) {
-			var header = new Header()
+		private static AmazonEnvelope InstantiateEnvelope<T>(string merchantId, string marketplaceName, bool purgeAndReplace, List<T> messageItems, AmazonEnvelopeMessageType messageType, DateTime effectiveDate, AmazonEnvelopeMessageOperationType operationType = AmazonEnvelopeMessageOperationType.Update) where T : AmazonMessageChoice {
+			var header = new Amazon.Header()
 			{
 				DocumentVersion = "1.0",
 				MerchantIdentifier = merchantId
 			};
 
 
-			var messageLength = messageItems.Length;
-			var messageList = new AmazonEnvelopeMessage[messageLength];
+			var messageList = new List<AmazonEnvelopeMessage>();
 			var currentId = 1;
 
-			for (var i = 0; i < messageLength; i++)
+			foreach (var messageItem in messageItems)
 			{
-				var messageItem = messageItems[i];
 				var message = new AmazonEnvelopeMessage()
 				{
 					Item = messageItem,
@@ -70,7 +68,7 @@ namespace AmazonMWSTester.MWSApi
 					OperationType = operationType
 				};
 
-				messageList[i] = message;
+				messageList.Add(message);
 			}
 
 			var envelope = new AmazonEnvelope()
@@ -87,7 +85,7 @@ namespace AmazonMWSTester.MWSApi
 		}
 
 
-		public async Task<MwsResponse<SubmitFeedResponse>> SubmitFeed<T>(T[] messageItems, AmazonEnvelopeMessageType messageType, DateTime effectiveDate, string feedType, bool purgeAndReplace = false, AmazonEnvelopeMessageOperationType operationType = AmazonEnvelopeMessageOperationType.Update) 
+		public async Task<MwsResponse<SubmitFeedResponse>> SubmitFeed<T>(List<T> messageItems, AmazonEnvelopeMessageType messageType, DateTime effectiveDate, string feedType, bool purgeAndReplace = false, AmazonEnvelopeMessageOperationType operationType = AmazonEnvelopeMessageOperationType.Update) where T : AmazonMessageChoice 
 		{
 			if (typeof(T).Name != messageType.ToString())
 			{

@@ -13,25 +13,14 @@ namespace AmazonMWSTester.Amazon {
     using System.ComponentModel;
     using System.Collections.Generic;
     
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Xsd2Code", "3.4.0.32990")]
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace="", IsNullable=false)]
+  
     public partial class Luggage {
         
-        private LuggageVariationData variationDataField;
-        
-        private Battery batteryField;
         
         private string modelField;
         
         private string modelNameField;
-        
-        private VolumeDimension volumeCapacityNameField;
-        
-        private List<string> specialFeaturesField;
+
         
         private string materialTypeField;
         
@@ -53,7 +42,6 @@ namespace AmazonMWSTester.Amazon {
         
         private string numberOfWheelsField;
         
-        private WeightDimension lithiumBatteryWeightField;
         
         private string wheelTypeField;
         
@@ -61,7 +49,6 @@ namespace AmazonMWSTester.Amazon {
         
         private string lifestyleField;
         
-        private LengthDimension shoulderStrapDropField;
         
         private string sizeField;
         
@@ -96,10 +83,7 @@ namespace AmazonMWSTester.Amazon {
         private string batteryFormFactorField;
         
         private string patternField;
-        
-        private LengthDimension minimumCircumferenceField;
-        
-        private LengthDimension maximumCircumferenceField;
+       
         
         private string lockTypeField;
         
@@ -113,7 +97,6 @@ namespace AmazonMWSTester.Amazon {
         
         private string compartmentDescriptionField;
         
-        private LengthDimension displaySizeField;
         
         private string handleTypeField;
         
@@ -123,7 +106,6 @@ namespace AmazonMWSTester.Amazon {
         
         private bool veryHighValueFieldSpecified;
         
-        private AgeRecommendedDimension manufacturerMinimumAgeField;
         
         private bool waterResistanceFieldSpecified;
         
@@ -141,7 +123,6 @@ namespace AmazonMWSTester.Amazon {
         
         private bool isAdultProductFieldSpecified;
         
-        private List<string> performanceRatingField;
         
         private string sellerWarrantyDescriptionField;
         
@@ -149,7 +130,6 @@ namespace AmazonMWSTester.Amazon {
         
         private string themeField;
         
-        private List<string> specificUsesForProductField;
         
         private string opacityField;
         
@@ -163,222 +143,48 @@ namespace AmazonMWSTester.Amazon {
         
         private string capacityNameField;
         
-    public LuggageProductType ProductType {get; set;}
 
     public LuggageVariationData VariationData {get; set;}
 
     public Battery Battery {get; set;}
 
     [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Model {get; set;}
 
     [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string ModelName {get; set;}
 
     public VolumeDimension VolumeCapacityName {get; set;}
 
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string MaterialType {get; set;}
+   
 
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string ClosureType {get; set;}
+   
 
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string ShellType {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string TeamName {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string InnerMaterialType {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Collection {get; set;}
-
-    public bool IsStainResistant {get; set;}
-
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool IsStainResistantSpecified {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string StrapType {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="positiveInteger")]
-    public string NumberOfWheels {get; set;}
+    
 
     public WeightDimension LithiumBatteryWeight {get; set;}
 
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string WheelType {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string ColorMap {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Lifestyle {get; set;}
+   
 
     public LengthDimension ShoulderStrapDrop {get; set;}
 
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Size {get; set;}
+   
 
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Certification {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Season {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Department {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string OuterMaterialType {get; set;}
-
-    public BatteryCellTypeValues BatteryComposition {get; set;}
-
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool BatteryCompositionSpecified {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string LoadConfiguration {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string LeatherType {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="positiveInteger")]
-    public string ModelYear {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Style {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string FabricType {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Color {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string LiningDescription {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string BatteryDescription {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Specifications {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string BatteryFormFactor {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Pattern {get; set;}
+  
 
     public LengthDimension MinimumCircumference {get; set;}
 
     public LengthDimension MaximumCircumference {get; set;}
 
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string LockType {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Character {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Warranty {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="positiveInteger")]
-    public string NumberOfCompartments {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string OccasionType {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string CompartmentDescription {get; set;}
+   
 
     public LengthDimension DisplaySize {get; set;}
 
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string HandleType {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string HarmonizedCode {get; set;}
-
-    public bool VeryHighValue {get; set;}
-
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool VeryHighValueSpecified {get; set;}
+   
 
     public AgeRecommendedDimension ManufacturerMinimumAge {get; set;}
 
-    public WaterResistantType WaterResistance {get; set;}
-
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool WaterResistanceSpecified {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string WearResistance {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string WarrantyType {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string SizeMap {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string CareInstructions {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string IncludedComponents {get; set;}
-
-    public bool IsAdultProduct {get; set;}
-
-    [System.Xml.Serialization.XmlIgnoreAttribute()]
-    public bool IsAdultProductSpecified {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string SellerWarrantyDescription {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string PatternType {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Theme {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string Opacity {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string MfrWarrantyDescriptionType {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string MfrWarrantyDescriptionParts {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string MfrWarrantyDescriptionLabor {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string FabricWash {get; set;}
-
-    [System.Xml.Serialization.XmlElementAttribute(DataType="normalizedString")]
-    public string CapacityName {get; set;}
 
         
-        public Luggage() {
-            this.specificUsesForProductField = new List<string>();
-            this.performanceRatingField = new List<string>();
-            this.specialFeaturesField = new List<string>();
-            this.volumeCapacityNameField = new VolumeDimension();
-            this.variationDataField = new LuggageVariationData();
-        }
-        
-        [System.Xml.Serialization.XmlElementAttribute("SpecialFeatures", DataType="normalizedString")]
-        public List<string> SpecialFeatures {
-            get {
-                return this.specialFeaturesField;
-            }
-            set {
-                this.specialFeaturesField = value;
-            }
-        }
+       
         
         [System.Xml.Serialization.XmlElementAttribute("PerformanceRating", DataType="normalizedString")]
         public List<string> PerformanceRating {
