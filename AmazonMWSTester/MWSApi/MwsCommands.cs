@@ -205,6 +205,15 @@ namespace AmazonMWSTester.MWSApi
 			var xmlBody = "";
 			if (bodyObject != null) {
 				var envelope = bodyObject as AmazonEnvelope;
+
+				try{
+					var hehe = envelope.Serialize();
+				}
+				catch (Exception ex)
+				{
+
+				}
+
 				xmlBody = MwsUtilities.SerializeXml<T>(bodyObject);
 				xmlBody = encoding.Replace(xmlBody, "", 1);
 

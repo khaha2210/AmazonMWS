@@ -138,7 +138,8 @@ namespace AmazonMWSTester.Amazon {
 
     public ProductDiscoveryData DiscoveryData {get; set;}
 
-    public ProductProductData ProductData {get; set;}
+	[System.Xml.Serialization.XmlElementAttribute("Shoes", typeof(Shoes))]
+	public ProductProductData ProductData {get; set;}
 
     public bool ShippedByFreight {get; set;}
 

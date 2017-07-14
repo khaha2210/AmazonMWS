@@ -11,6 +11,7 @@ namespace AmazonMWSTester.Amazon
 
 	}
 
+
 	public partial class ProductProductData
 	{
 

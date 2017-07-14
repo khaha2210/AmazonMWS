@@ -10,7 +10,10 @@ namespace AmazonMWSTester.Amazon
 	{
 	}
 
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")] [System.SerializableAttribute()] [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)] public enum RawMaterialsProductType { CeramicBalls, CeramicTubing, Ceramics, MetalBalls, MetalMesh, MetalTubing, Metals, PlasticBalls, PlasticMesh, PlasticTubing, Plastics, RawMaterials, Wire, }
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")] [System.SerializableAttribute()] public enum MeshCountUnitOfMeasure {[System.Xml.Serialization.XmlEnumAttribute("threads per centimeter")] threadspercentimeter, [System.Xml.Serialization.XmlEnumAttribute("threads per inch")] threadsperinch, }
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
+[System.SerializableAttribute()]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)] public enum RawMaterialsProductType { CeramicBalls, CeramicTubing, Ceramics, MetalBalls, MetalMesh, MetalTubing, Metals, PlasticBalls, PlasticMesh, PlasticTubing, Plastics, RawMaterials, Wire, }
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
+[System.SerializableAttribute()] public enum MeshCountUnitOfMeasure {[System.Xml.Serialization.XmlEnumAttribute("threads per centimeter")] threadspercentimeter, [System.Xml.Serialization.XmlEnumAttribute("threads per inch")] threadsperinch, }
 
 }

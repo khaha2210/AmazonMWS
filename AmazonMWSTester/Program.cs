@@ -11,6 +11,7 @@ using System.Xml;
 using AmazonMWSTester.MWSApi;
 using System.Collections;
 using AmazonMWSTester.MWSApi.Results;
+using AmazonMWSTester.Amazon;
 
 namespace AmazonMWSTester.MWSApi
 {
@@ -26,65 +27,48 @@ namespace AmazonMWSTester.MWSApi
 		{
 			var client = new MwsClient(SellerId, MwsAuthToken, AwsAccessKeyId, SecretKey,MarketplaceId);
 
-			var productList = new Product[1];
-			var product = new Product()
+			var shoe = new Shoes()
 			{
-				SKU = "123456789",
-				StandardProductID = new StandardProductID()
+				ClassificationData = new ShoesClassificationData()
 				{
-					Type = StandardProductIDType.UPC,
-					Value = "762052949859"
-				},
-				ProductTaxCode = "A_GEN_NOTAX",
-				LaunchDate = new DateTime(2017, 7, 1),
-				Condition = new ConditionInfo()
-				{
-					ConditionType = ConditionType.New
-				},
-				DescriptionData = new ProductDescriptionData()
-				{
-					Title = @"Brooks Unisex 2 Qw-k Black/Nightlife/Brooks Brite Blue Athletic Shoe",
-					Brand = "Brooks",
-					Description = "These shoes are tight",
-					PackageWeight = new PositiveWeightDimension()
-					{
-						unitOfMeasure = WeightUnitOfMeasure.LB,
-						Value = 2
-					},
-					MSRP = new CurrencyAmount()
-					{
-						currency = BaseCurrencyCode.USD,
-						Value = 1000000.00m
-					},
-					Autographed = true,
-					TSDAgeWarning = ProductDescriptionDataTSDAgeWarning.not_suitable_under_3_years_supervision
-				},
-				PromoTag = new ProductPromoTag()
-				{
-					PromoTagType = ProductPromoTagPromoTagType.NewArrival,
-					EffectiveFromDate = new DateTime(2017,7,1),
-					EffectiveThroughDate = new DateTime(2017,8,1)
-				},
-				ProductData = new ProductProductData()
-				{
-					Item = new Shoes()
-					{
-						ClassificationData = new ShoesClassificationData()
-						{
-							CountryOfOrigin = "USA"
-						},
-						ClothingType = ShoesClothingType.Shoes
-					}
+					FabricType = "Dick fabric"
 				}
 			};
 
-			productList[0] = product;
-			var submitFeed = client.SubmitFeed<Product>(productList, AmazonEnvelopeMessageType.Product, new DateTime(2017, 7, 1), FeedTypes.ProductFeed, false);
+			var productList = new List<Product>();
+			var product = new Product()
+			{
+				SKU = "12345678",
+				Condition = new ConditionInfo()
+				{
+					ConditionType = ConditionType.New,
+					ConditionNote = "heheh",
+				},
+				ProductData = shoe,
+				DescriptionData = new ProductDescriptionData()
+				{
+					Brand = "Test Brand",
+					MSRP = new CurrencyAmount()
+					{
+					currency = BaseCurrencyCode.USD,
+					Value = 1000000.00m
+					},
+					Title = "California Republic Turquoise Palm Men's T-Shirt"
+				},
+				ProductTaxCode = "A_GEN_NOTAX",
+				StandardProductID = new Amazon.StandardProductID()
+				{
+					Type = StandardProductIDType.ASIN,
+					Value = "B00XDF7VNS"
+				}
+			};
+
+			productList.Add(product);
+
+			var submitFeed = client.SubmitFeed<Product>(productList, AmazonEnvelopeMessageType.Product, DateTime.UtcNow, FeedTypes.ProductFeed, true);
 			submitFeed.Wait();
 
 			var submitResult = submitFeed.Result.Result;
-
-
 			Console.WriteLine(submitResult.SubmitFeedResult.FeedSubmissionInfo.FeedSubmissionId); 
 
 

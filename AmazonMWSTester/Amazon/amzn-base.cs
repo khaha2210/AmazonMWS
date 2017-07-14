@@ -344,6 +344,8 @@ namespace AmazonMWSTester.Amazon
 	{
 		PreviousPrice,
 		Price,
+		AmazonOrderID,
+		MerchantOrderID
 	}
 
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]

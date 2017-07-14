@@ -10,6 +10,8 @@ namespace AmazonMWSTester.Amazon
 	{
 	}
 
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")] [System.SerializableAttribute()] [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)] public enum PowerTransmissionProductType { BearingsAndBushings, Belts, CompressionSprings, ExtensionSprings, FlexibleCouplings, Gears, RigidCouplings, ShaftCollar, TorsionSprings, LinearGuidesAndRails, Pulleys, RollerChain, CouplingsCollarsAndUniversalJoints, Springs, Sprockets, UniversalJoints, }
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2046.0")]
+[System.SerializableAttribute()]
+[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)] public enum PowerTransmissionProductType { BearingsAndBushings, Belts, CompressionSprings, ExtensionSprings, FlexibleCouplings, Gears, RigidCouplings, ShaftCollar, TorsionSprings, LinearGuidesAndRails, Pulleys, RollerChain, CouplingsCollarsAndUniversalJoints, Springs, Sprockets, UniversalJoints, }
 
 }
